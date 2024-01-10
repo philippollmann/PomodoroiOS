@@ -20,6 +20,8 @@
 		F7E285042B4D9BB0009399DC /* TextStyleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E285022B4D9BB0009399DC /* TextStyleModifier.swift */; };
 		F7E285052B4D9BB0009399DC /* RoundedBorderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E285032B4D9BB0009399DC /* RoundedBorderModifier.swift */; };
 		F7E285072B4D9BC6009399DC /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E285062B4D9BC6009399DC /* View+Extension.swift */; };
+		F7E285092B4DA3A4009399DC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E285082B4DA3A4009399DC /* SettingsView.swift */; };
+		F7E2850C2B4DAD23009399DC /* PomodoroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2850B2B4DAD23009399DC /* PomodoroViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		F7E285022B4D9BB0009399DC /* TextStyleModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyleModifier.swift; sourceTree = "<group>"; };
 		F7E285032B4D9BB0009399DC /* RoundedBorderModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderModifier.swift; sourceTree = "<group>"; };
 		F7E285062B4D9BC6009399DC /* View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		F7E285082B4DA3A4009399DC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F7E2850B2B4DAD23009399DC /* PomodoroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +159,8 @@
 		F7E284F62B4D977A009399DC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				F7E284CB2B4D970E009399DC /* PomodoroView.swift */,
+				F7E2850A2B4DAD0A009399DC /* PomodoroView */,
+				F7E285082B4DA3A4009399DC /* SettingsView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -191,6 +196,15 @@
 				F7E285022B4D9BB0009399DC /* TextStyleModifier.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		F7E2850A2B4DAD0A009399DC /* PomodoroView */ = {
+			isa = PBXGroup;
+			children = (
+				F7E284CB2B4D970E009399DC /* PomodoroView.swift */,
+				F7E2850B2B4DAD23009399DC /* PomodoroViewModel.swift */,
+			);
+			path = PomodoroView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E285042B4D9BB0009399DC /* TextStyleModifier.swift in Sources */,
+				F7E285092B4DA3A4009399DC /* SettingsView.swift in Sources */,
+				F7E2850C2B4DAD23009399DC /* PomodoroViewModel.swift in Sources */,
 				F7E284CC2B4D970E009399DC /* PomodoroView.swift in Sources */,
 				F7E284FF2B4D9A70009399DC /* Spacer.swift in Sources */,
 				F7E284CE2B4D970E009399DC /* Item.swift in Sources */,
@@ -502,6 +518,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,6 +548,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,6 +610,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3MXML3JQB6;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.PomodoroUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -610,6 +629,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3MXML3JQB6;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.PomodoroUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

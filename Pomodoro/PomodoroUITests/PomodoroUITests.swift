@@ -9,25 +9,54 @@ import XCTest
 
 final class PomodoroUITests: XCTestCase {
 
+    
+    private var app: XCUIApplication!
+    private let device = XCUIDevice.shared
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        try super.setUpWithError()
+    
+        app = XCUIApplication()
+        app.launch()
+        
+        // set device to portrait before each test
+        device.orientation = .portrait
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
+        app.terminate() // shut down app
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testPomodoroView() throws {
+        device.orientation = .landscapeLeft
+        device.orientation = .landscapeRight
+        device.orientation = .portraitUpsideDown
+        device.orientation = .portrait
+        
+        let timerTextElement: XCUIElement = app.staticTexts.element(matching: .staticText, identifier: "timeLabel")
+        let toggleTimerButton: XCUIElement = app.buttons.element(matching: .button, identifier: "toggleButton")
+        
+       
+        if timerTextElement.exists, toggleTimerButton.isHittable {
+           
+            // start Timer
+            XCTAssertEqual(timerTextElement.label, "25:00")
+            XCTAssertEqual(toggleTimerButton.label, "Start")
+            toggleTimerButton.tap()
+        
+            // check afer 10 seconds
+            sleep(10)
+            
+            XCTAssertEqual(timerTextElement.label, "24:50")
+            XCTAssertEqual(toggleTimerButton.label, "Stop")
+            
+            // stop Timer
+            toggleTimerButton.tap()
+            XCTAssertEqual(timerTextElement.label, "25:00")
+            XCTAssertEqual(toggleTimerButton.label, "Start")
+        }
     }
 
     func testLaunchPerformance() throws {
