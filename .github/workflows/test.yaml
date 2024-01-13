@@ -14,8 +14,8 @@ jobs:
             ios: "17.0"
     name: test iOS (${{ matrix.ios }})
     steps:
-    - uses: actions/checkout@v1
-    - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_$.app && /usr/bin/xcodebuild -version
+    - uses: actions/checkout@v4
+    - name: Check Xcode version
+      run: /usr/bin/xcodebuild -version
     - name: Run tests
       run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=$' | xcpretty && exit ${PIPESTATUS[0]}
