@@ -18,4 +18,4 @@ jobs:
     - name: Check Xcode version
       run: /usr/bin/xcodebuild -version
     - name: Run tests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2' | xcpretty && exit ${PIPESTATUS[0]}
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' | xcpretty && exit ${PIPESTATUS[0]}
