@@ -1,30 +1,23 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# GitHub recommends pinning actions to a commit SHA.
-# To get a newer version, you will need to update the SHA.
-# You can also reference a tag or branch, but the action may change without warning.
-
-name: Swift
+name: Pomodoro Tests
 
 on: [push]
 
 jobs:
-  build:
-    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
+  run_tests:
+    runs-on: macos-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        swift: ["5.2", "5.3"]
-    runs-on: ${{ matrix.os }}
+        include:
+          - xcode: "15.0"
+            ios: "17.2"
+    name: test iOS (${{ matrix.ios }})
     steps:
-      - uses: swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf
-        with:
-          swift-version: ${{ matrix.swift }}
-      - uses: actions/checkout@v4
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
+    - uses: actions/checkout@v4
+    - uses: futureware-tech/simulator-action@v3
+    with:
+      model: 'iPhone 15'
+    - name: Check Xcode version
+      run: /usr/bin/xcodebuild -version
+    - name: Run tests
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' | xcpretty && exit ${PIPESTATUS[0]}
+
