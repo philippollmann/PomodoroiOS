@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F72E58BC2B55856B00E50DF8 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E58BB2B55856B00E50DF8 /* SnapshotTests.swift */; };
+		F73848822B5588CB000F8D72 /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F73848812B5588CB000F8D72 /* InlineSnapshotTesting */; };
+		F73848842B5588CB000F8D72 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F73848832B5588CB000F8D72 /* SnapshotTesting */; };
 		F7E284CA2B4D970E009399DC /* PomodoroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E284C92B4D970E009399DC /* PomodoroApp.swift */; };
 		F7E284CC2B4D970E009399DC /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E284CB2B4D970E009399DC /* PomodoroView.swift */; };
 		F7E284CE2B4D970E009399DC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E284CD2B4D970E009399DC /* Item.swift */; };
@@ -42,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F72E58BB2B55856B00E50DF8 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		F7E284C62B4D970E009399DC /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E284C92B4D970E009399DC /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
 		F7E284CB2B4D970E009399DC /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73848822B5588CB000F8D72 /* InlineSnapshotTesting in Frameworks */,
+				F73848842B5588CB000F8D72 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				F7E285002B4D9B8C009399DC /* Extensions */,
-				F7E285062B4D9BC6009399DC /* View+Extension.swift */,
 				F7E284FD2B4D9A70009399DC /* Utils */,
 				F7E284F72B4D9791009399DC /* Model */,
 				F7E284F62B4D977A009399DC /* UI */,
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				F7E284DC2B4D970F009399DC /* PomodoroTests.swift */,
+				F72E58BB2B55856B00E50DF8 /* SnapshotTests.swift */,
 			);
 			path = PomodoroTests;
 			sourceTree = "<group>";
@@ -184,6 +190,7 @@
 		F7E285002B4D9B8C009399DC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F7E285062B4D9BC6009399DC /* View+Extension.swift */,
 				F7E285012B4D9B96009399DC /* Modifiers */,
 			);
 			path = Extensions;
@@ -241,6 +248,10 @@
 				F7E284DA2B4D970F009399DC /* PBXTargetDependency */,
 			);
 			name = PomodoroTests;
+			packageProductDependencies = (
+				F73848812B5588CB000F8D72 /* InlineSnapshotTesting */,
+				F73848832B5588CB000F8D72 /* SnapshotTesting */,
+			);
 			productName = PomodoroTests;
 			productReference = F7E284D82B4D970F009399DC /* PomodoroTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -295,6 +306,9 @@
 				Base,
 			);
 			mainGroup = F7E284BD2B4D970E009399DC;
+			packageReferences = (
+				F72E58BA2B55846900E50DF8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = F7E284C72B4D970E009399DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -355,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E284DD2B4D970F009399DC /* PomodoroTests.swift in Sources */,
+				F72E58BC2B55856B00E50DF8 /* SnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +695,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F72E58BA2B55846900E50DF8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F73848812B5588CB000F8D72 /* InlineSnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F72E58BA2B55846900E50DF8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = InlineSnapshotTesting;
+		};
+		F73848832B5588CB000F8D72 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F72E58BA2B55846900E50DF8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F7E284BE2B4D970E009399DC /* Project object */;
 }
