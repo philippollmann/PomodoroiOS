@@ -1,0 +1,10 @@
+workflows:
+  pomdoro-workflow:
+    name: Pomodoro Pipeline
+    scripts: 
+      -name: CICD Started
+      script: echo "Welcome to CI/CD set up"
+    publishing:
+      email:
+        recipients:
+          - ollmann.ph@gmail.com
