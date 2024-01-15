@@ -17,9 +17,8 @@ workflows:
           xcode-project run-tests \
               --project "$XCODE_PROJECT" \
               --scheme "$XCODE_SCHEME" \
-              --device "iPhone 13" \
+              --device "iPhone 15" \
               --test-xcargs "CODE_SIGNING_ALLOWED='no'"
-        test_report: build/ios/test/*.xml
     publishing:
         email:
           recipients:
