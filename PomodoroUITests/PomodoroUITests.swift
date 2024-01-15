@@ -45,16 +45,20 @@ final class PomodoroUITests: XCTestCase {
             XCTAssertEqual(timerTextElement.label, "25:00")
             XCTAssertEqual(toggleTimerButton.label, "Start")
             
+            sleep(1)
+            
             toggleTimerButton.tap()
         
             // check afer 10 seconds
             sleep(10)
             
-            //XCTAssertEqual(timerTextElement.label, "24:50")
-            //XCTAssertEqual(toggleTimerButton.label, "Stop")
+            XCTAssertEqual(timerTextElement.label, "24:50")
+            XCTAssertEqual(toggleTimerButton.label, "Stop")
             
             // stop Timer
             toggleTimerButton.tap()
+            
+            sleep(1)
             XCTAssertEqual(timerTextElement.label, "25:00")
             XCTAssertEqual(toggleTimerButton.label, "Start")
         }
