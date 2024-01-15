@@ -1,10 +1,25 @@
 workflows:
   pomdoro-workflow:
     name: Pomodoro Pipeline
+    environment:
+      vars:
+        XCODE_PROJECT: "Pomodoro.xcodeproj"
+        XCODE_SCHEME: "Pomodoro"
+      xcode: latest
+      cocoapods: default
     scripts:
       - name: CICD Started
         script: echo "Welcome to CI/CD set up"
+      - name: Build Pomodoro
+        script: xcodebuild build -project "Pomodoro.xcodeproj" -scheme "Pomodoro" CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO Code_SIGNING-ALLOWED=NO
+      - name: Run UI and Unit tests
+        script: |
+          xcode-project run-tests \
+              --project "$XCODE_PROJECT" \
+              --scheme "$XCODE_SCHEME" \
+              --device "iPhone 15" \
+              --test-xcargs "CODE_SIGNING_ALLOWED='no'"
     publishing:
         email:
-        recipients:
-          - ollmann.ph@gmail.com
+          recipients:
+            - ollmann.ph@gmail.com
