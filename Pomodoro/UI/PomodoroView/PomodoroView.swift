@@ -74,13 +74,19 @@ struct PomodoroView: View {
     }
 }
 
-#Preview("Light") {
-    PomodoroView()
-        .modelContainer(for: Item.self, inMemory: true)
-}
+struct PomodoroView_Previews: PreviewProvider {
+    static var previews: some View {
+        previewLight()
+        previewDark()
+    }
 
-#Preview("Dark") {
-    PomodoroView()
-        .modelContainer(for: Item.self, inMemory: true)
-        .preferredColorScheme(.dark)
+    static func previewLight() -> some View {
+        return PomodoroView()
+            .preferredColorScheme(.light)
+    }
+
+    static func previewDark() -> some View {
+        return PomodoroView()
+            .preferredColorScheme(.dark)
+    }
 }
