@@ -10,6 +10,7 @@
 		F72E58BC2B55856B00E50DF8 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E58BB2B55856B00E50DF8 /* SnapshotTests.swift */; };
 		F73848822B5588CB000F8D72 /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F73848812B5588CB000F8D72 /* InlineSnapshotTesting */; };
 		F73848842B5588CB000F8D72 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F73848832B5588CB000F8D72 /* SnapshotTesting */; };
+		F7A8E7292B56CAF0009A8A03 /* PomodoroCircleIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8E7282B56CAF0009A8A03 /* PomodoroCircleIndicator.swift */; };
 		F7E284CA2B4D970E009399DC /* PomodoroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E284C92B4D970E009399DC /* PomodoroApp.swift */; };
 		F7E284CC2B4D970E009399DC /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E284CB2B4D970E009399DC /* PomodoroView.swift */; };
 		F7E284CE2B4D970E009399DC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E284CD2B4D970E009399DC /* Item.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		F72932482B56B03D006DD0B5 /* Pomodoro.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pomodoro.xctestplan; sourceTree = "<group>"; };
 		F72E58BB2B55856B00E50DF8 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
+		F7A8E7282B56CAF0009A8A03 /* PomodoroCircleIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroCircleIndicator.swift; sourceTree = "<group>"; };
 		F7E284C62B4D970E009399DC /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E284C92B4D970E009399DC /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
 		F7E284CB2B4D970E009399DC /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F7A8E7272B56CAE0009A8A03 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F7A8E7282B56CAF0009A8A03 /* PomodoroCircleIndicator.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		F7E284BD2B4D970E009399DC = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +177,7 @@
 		F7E284F62B4D977A009399DC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F7A8E7272B56CAE0009A8A03 /* Components */,
 				F7E2850A2B4DAD0A009399DC /* PomodoroView */,
 				F7E285082B4DA3A4009399DC /* SettingsView.swift */,
 			);
@@ -356,6 +367,7 @@
 			files = (
 				F7E285042B4D9BB0009399DC /* TextStyleModifier.swift in Sources */,
 				F7E285092B4DA3A4009399DC /* SettingsView.swift in Sources */,
+				F7A8E7292B56CAF0009A8A03 /* PomodoroCircleIndicator.swift in Sources */,
 				F7E2850C2B4DAD23009399DC /* PomodoroViewModel.swift in Sources */,
 				F7E284CC2B4D970E009399DC /* PomodoroView.swift in Sources */,
 				F7E284FF2B4D9A70009399DC /* Spacer.swift in Sources */,
@@ -543,6 +555,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.Pomodoro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -573,6 +588,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.Pomodoro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -592,6 +610,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.PomodoroTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -612,6 +633,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.PomodoroTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -631,6 +655,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.PomodoroUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -650,6 +677,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.philippollmann.PomodoroUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,24 +1,59 @@
 
 name: Pomodoro Tests
 
-on: [push]
+on: 
+  pull_request:
+    types:
+      - opened
+    branches:
+      - develop
+      - main
 
 jobs:
-  run_tests:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        include:
-          - xcode: "15.2"
-            ios: "17.2"
-          - xcode: "15.3"
-            ios: "17.0"
-    name: test iOS (${{ matrix.ios }})
+  run_ui_tests:
+    runs-on: macos-13
+    name: Pomodoro UI Tests
     steps:
     - uses: actions/checkout@v4
-    - name: Check Xcode version
-      run: /usr/bin/xcodebuild -version
-    - name: Check iOS Simulators
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_15.2.app && /usr/bin/xcodebuild -version
+    - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
-    - name: Run tests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=latest' | xcpretty && exit ${PIPESTATUS[0]}
+    - name: Run UITests
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath UITestResults -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroUITests" 
+    - uses: kishikawakatsumi/xcresulttool@v1
+      with:
+        path: UITestResults.xcresult
+      if: success() || failure()
+  
+  run_snapshot_tests:
+    runs-on: macos-13
+    name: Pomodoro Snapshot Tests
+    steps:
+    - uses: actions/checkout@v4
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_15.2.app && /usr/bin/xcodebuild -version
+    - name: Check Available Simulators
+      run: /usr/bin/xcrun simctl list devices
+    - name: Run Snapshot Tests
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath SnapshotTestResults -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/SnapshotTests"
+    - uses: kishikawakatsumi/xcresulttool@v1
+      with:
+        path: SnapshotTestResults.xcresult
+      if: success() || failure()      
+  
+  run_unit_tests:
+    runs-on: macos-13
+    name: Pomodoro Unit Tests
+    steps:
+    - uses: actions/checkout@v4
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_15.2.app && /usr/bin/xcodebuild -version
+    - name: Check Available Simulators
+      run: /usr/bin/xcrun simctl list devices
+    - name: Run Unit Tests
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath UnitTestResults -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/PomodoroTests"
+    - uses: kishikawakatsumi/xcresulttool@v1
+      with:
+        path: UnitTestResults.xcresult
+      if: success() || failure()

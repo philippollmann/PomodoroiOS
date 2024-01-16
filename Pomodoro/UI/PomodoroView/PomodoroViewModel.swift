@@ -12,9 +12,9 @@ import SwiftUI
 class PomodoroViewModel: ObservableObject {
     
     var counter = 0
-    var timer: Timer? = nil
     var timerRunning: Bool = false
     var showSettings: Bool = false
+    var timer: Timer? = nil
     
     var percentageCompleted: Float {
         print("Counter: \(counter)")
@@ -46,6 +46,7 @@ class PomodoroViewModel: ObservableObject {
                 self.stopTimer()
             }
         }
+        
     }
     
     private func stopTimer() {

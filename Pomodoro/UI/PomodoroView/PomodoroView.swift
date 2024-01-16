@@ -10,7 +10,7 @@ import SwiftData
 
 struct PomodoroView: View {
    
-    @State private var model = PomodoroViewModel()
+    @State  private var model = PomodoroViewModel()
     
     var body: some View {
         NavigationSplitView {
@@ -20,6 +20,7 @@ struct PomodoroView: View {
                     .font(.system(size: 100).monospacedDigit())
                     .fontWeight(.bold)
                     .accessibilityIdentifier("timeLabel")
+                PomodoroCircleIndicator(amount: .constant(4), completed: .constant(2), running: .constant(true))
                 Spacer()
                 Spacer()
                 
