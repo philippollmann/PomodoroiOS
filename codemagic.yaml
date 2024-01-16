@@ -5,7 +5,7 @@ workflows:
       vars:
         XCODE_PROJECT: "Pomodoro.xcodeproj"
         XCODE_SCHEME: "Pomodoro"
-      xcode: latest
+      xcode: 15.2
       cocoapods: default
     scripts:
       - name: CICD Started
@@ -13,12 +13,15 @@ workflows:
       - name: Build Pomodoro
         script: xcodebuild build -project "Pomodoro.xcodeproj" -scheme "Pomodoro" CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO Code_SIGNING-ALLOWED=NO
       - name: Run UI and Unit tests
-        script: |
-          xcode-project run-tests \
-              --project "$XCODE_PROJECT" \
-              --scheme "$XCODE_SCHEME" \
-              --device "iPhone 15" \
-              --test-xcargs "CODE_SIGNING_ALLOWED='no'"
+        script: | 
+          xcodebuild test \
+            -workspace "$XCODE_WORKSPACE" \
+            -scheme "$XCODE_SCHEME" \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2' \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
     publishing:
         email:
           recipients:
