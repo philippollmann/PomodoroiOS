@@ -14,7 +14,11 @@ jobs:
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
     - name: Run UITests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroUITests"
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath UITestResults -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroUITests" 
+    - uses: kishikawakatsumi/xcresulttool@v1
+      with:
+        path: UITestResults.xcresult
+      if: success() || failure()
   
   run_snapshot_tests:
     runs-on: macos-13
@@ -26,7 +30,11 @@ jobs:
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
     - name: Run Snapshot Tests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/SnapshotTests"      
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath SnapshotTestResults -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/SnapshotTests"
+    - uses: kishikawakatsumi/xcresulttool@v1
+    with:
+      path: SnapshotTestResults.xcresult
+    if: success() || failure()      
   
   run_unit_tests:
     runs-on: macos-13
@@ -38,4 +46,8 @@ jobs:
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
     - name: Run Unit Tests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/PomodoroTests"
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath UnitTestResults -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/PomodoroTests"
+    - uses: kishikawakatsumi/xcresulttool@v1
+    with:
+      path: UnitTestResults.xcresult
+    if: success() || failure()
