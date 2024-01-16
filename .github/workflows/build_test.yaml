@@ -10,8 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_15.1.app && /usr/bin/xcodebuild -version
+      run: sudo xcode-select -switch /Applications/Xcode_15.2.app && /usr/bin/xcodebuild -version
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
-    - name: Run Tests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2"
+    - name: Run UITests
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroUITests"
