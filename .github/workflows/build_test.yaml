@@ -14,4 +14,4 @@ jobs:
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
     - name: Run Tests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator, OS=17.2, name=iPhone 15'
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2"
