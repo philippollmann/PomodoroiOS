@@ -4,9 +4,9 @@ name: Pomodoro Tests
 on: [push]
 
 jobs:
-  run_tests:
+  run_ui_tests:
     runs-on: macos-13
-    name: test iOS
+    name: Pomodoro UI Tests
     steps:
     - uses: actions/checkout@v4
     - name: Select Xcode
@@ -15,3 +15,27 @@ jobs:
       run: /usr/bin/xcrun simctl list devices
     - name: Run UITests
       run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroUITests"
+  
+  run_snapshot_tests:
+    runs-on: macos-13
+    name: Pomodoro Snapshot Tests
+    steps:
+    - uses: actions/checkout@v4
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_15.2.app && /usr/bin/xcodebuild -version
+    - name: Check Available Simulators
+      run: /usr/bin/xcrun simctl list devices
+    - name: Run Snapshot Tests
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/SnapshotTests"      
+  
+  run_unit_tests:
+    runs-on: macos-13
+    name: Pomodoro Unit Tests
+    steps:
+    - uses: actions/checkout@v4
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_15.2.app && /usr/bin/xcodebuild -version
+    - name: Check Available Simulators
+      run: /usr/bin/xcrun simctl list devices
+    - name: Run Unit Tests
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/PomodoroTests"
