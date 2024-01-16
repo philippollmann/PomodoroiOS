@@ -45,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F72932482B56B03D006DD0B5 /* Pomodoro.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pomodoro.xctestplan; sourceTree = "<group>"; };
 		F72E58BB2B55856B00E50DF8 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		F7E284C62B4D970E009399DC /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E284C92B4D970E009399DC /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		F7E284BD2B4D970E009399DC = {
 			isa = PBXGroup;
 			children = (
+				F72932482B56B03D006DD0B5 /* Pomodoro.xctestplan */,
 				F7E284C82B4D970E009399DC /* Pomodoro */,
 				F7E284DB2B4D970F009399DC /* PomodoroTests */,
 				F7E284E52B4D970F009399DC /* PomodoroUITests */,
