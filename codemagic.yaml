@@ -12,6 +12,10 @@ workflows:
         script: echo "Welcome to CI/CD set up"
       - name: Build Pomodoro
         script: xcodebuild build -project "Pomodoro.xcodeproj" -scheme "Pomodoro" CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO Code_SIGNING-ALLOWED=NO
+      - name: Run Unit Tests
+        script: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroTests/PomodoroTests"
+      - name: Run Snapshot Tests
+        script: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroUITests/SnapshotTests"
       - name: Run UI Tests
         script: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2" "-only-testing:PomodoroUITests"
     publishing:
