@@ -18,6 +18,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Check Xcode Version
       run: /usr/bin/xcodebuild -version
+    - name: Download iOS
+      run: /usr/bin/xcodebuild -downloadPlatform iOS
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
     - name: Run Tests
