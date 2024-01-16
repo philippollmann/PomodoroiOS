@@ -13,6 +13,19 @@ struct SettingsView: View {
     }
 }
 
-#Preview {
-    SettingsView()
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        previewLight()
+        previewDark()
+    }
+
+    static func previewLight() -> some View {
+        return SettingsView()
+            .preferredColorScheme(.light)
+    }
+
+    static func previewDark() -> some View {
+        return SettingsView()
+            .preferredColorScheme(.dark)
+    }
 }

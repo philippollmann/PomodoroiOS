@@ -39,6 +39,11 @@ final class SnapshotTests: XCTestCase {
         assertScreen(view: PomodoroView_Previews.previewLight(), scheme: .dark, name: "PomodoroView")
         assertScreen(view: PomodoroView_Previews.previewDark(), scheme: .light, name: "PomodoroView")
     }
+    
+    func testSettingsView(){
+        assertScreen(view: SettingsView_Previews.previewLight(), scheme: .dark, name: "SettingsView")
+        assertScreen(view: SettingsView_Previews.previewDark(), scheme: .light, name: "SettingsView")
+    }
 }
 
 extension SnapshotTests {
