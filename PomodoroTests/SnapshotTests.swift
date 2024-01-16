@@ -50,35 +50,30 @@ extension SnapshotTests {
     func assertScreen<Value>(view: Value, scheme: testColorScheme, name: String = #function) where Value: View {
         let precision: Float = 1
         let perceptualPrecision: Float = 0.98
-        let layout: SwiftUISnapshotLayout = .device(config: .iPhone13)
-        let scale: CGFloat = 2
         let isRecording = false
+        
+        let traitDarkMode = UITraitCollection(userInterfaceStyle: scheme == .dark ? .dark : .light)
 
-        if scheme == .dark {
-            assertSnapshot(
-                matching: view.colorScheme(.dark),
-                as: .image(
-                    precision: precision,
-                    perceptualPrecision: perceptualPrecision,
-                    layout: layout,
-                    traits: UITraitCollection(displayScale: scale)
-                ),
-                record: isRecording,
-                testName: "\(name)-dark"
-            )
-        } else {
-            assertSnapshot(
-                matching: view.colorScheme(.light),
-                as: .image(
-                    precision: precision,
-                    perceptualPrecision: perceptualPrecision,
-                    layout: layout,
-                    traits: UITraitCollection(displayScale: scale)
-                ),
-                record: isRecording,
-                testName: "\(name)-light"
-            )
-        }
+        assertSnapshot(
+            of: view.toVC(),
+            as: .image(
+                on: .iPhone13Pro,
+                precision: precision,
+                perceptualPrecision: perceptualPrecision,
+                traits: traitDarkMode
+            ),
+            record: isRecording,
+            testName: "\(name)-\(scheme == .dark ? "dark" : "light")"
+        )
+    }
+}
+
+
+extension View {
+    func toVC() -> UIViewController {
+        let vc = UIHostingController(rootView: self)
+        vc.view.frame = UIScreen.main.bounds
+        return vc
     }
 }
 
