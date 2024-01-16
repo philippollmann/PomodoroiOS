@@ -10,7 +10,7 @@ import SwiftData
 
 struct PomodoroView: View {
    
-    @State private var model = PomodoroViewModel()
+    @StateObject  private var model = PomodoroViewModel()
     
     var body: some View {
         NavigationSplitView {
