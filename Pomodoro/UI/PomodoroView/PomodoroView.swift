@@ -20,6 +20,7 @@ struct PomodoroView: View {
                     .font(.system(size: 100).monospacedDigit())
                     .fontWeight(.bold)
                     .accessibilityIdentifier("timeLabel")
+                PomodoroCircleIndicator()
                 Spacer()
                 Spacer()
                 
