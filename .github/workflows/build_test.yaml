@@ -5,22 +5,13 @@ on: [push]
 
 jobs:
   run_tests:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        include:
-          - xcode: "14.2"
-            ios: "16.2"
-          - xcode: "15.3"
-            ios: "17.2"
-    name: test iOS (${{ matrix.ios }})
+    runs-on: macos-13
+    name: test iOS
     steps:
-    - uses: actions/checkout@v2
-    - name: Check Xcode Version
-      run: /usr/bin/xcodebuild -version
-    - name: Download iOS
-      run: /usr/bin/xcodebuild -downloadPlatform iOS
+    - uses: actions/checkout@v4
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_15.1.app && /usr/bin/xcodebuild -version
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
     - name: Run Tests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2'
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
