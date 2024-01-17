@@ -39,6 +39,8 @@ final class PomodoroUITests: XCTestCase {
         let toggleTimerButton: XCUIElement = app.buttons.element(matching: .button, identifier: "toggleButton")
         
        
+        XCTAssertTrue(toggleTimerButton.isHittable)
+        
         if timerTextElement.exists, toggleTimerButton.isHittable {
            
             // start Timer
@@ -63,13 +65,32 @@ final class PomodoroUITests: XCTestCase {
             XCTAssertEqual(toggleTimerButton.label, "Start")
         }
     }
+    
+    func testSettingsView() throws {
+        let settingsButton: XCUIElement = app.buttons["settingsButton"]
+        
+        // opening settings view
+        settingsButton.tap()
+                    
+        // Check if the settings screen exists
+        let settingsTextElement: XCUIElement = app.staticTexts["settingsLabel"]
+        let settingsView = app.otherElements["settingsView"]
+        XCTAssertTrue(settingsView.waitForExistence(timeout: 1))
+        
+        // Check Label
+        XCTAssertEqual(settingsTextElement.label, "Settings View")
+        
+        // Dismiss Sheet
+        settingsView.swipeDown(velocity: .fast)
+        XCTAssertFalse(settingsTextElement.waitForExistence(timeout: 1))
+    }
 
-    func testLaunchPerformance() throws {
+    /*func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
         }
-    }
+    }*/
 }

@@ -13,7 +13,7 @@ struct PomodoroView: View {
     @State  private var model = PomodoroViewModel()
     
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             VStack {
                 Spacer()
                 Text(model.formattedTime) //TODO: maybe change to switch .formatted()
@@ -50,10 +50,9 @@ struct PomodoroView: View {
                         Image(systemName: "gearshape")
                             .foregroundStyle(Color.text)
                     }
+                    .accessibilityIdentifier("settingsButton")
                 }
             }
-        } detail: {
-            Text("Select an item")
         }
         .sheet(isPresented: $model.showSettings) {
             SettingsView()
