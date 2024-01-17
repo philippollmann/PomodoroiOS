@@ -38,6 +38,9 @@ final class PomodoroUITests: XCTestCase {
         let timerTextElement: XCUIElement = app.staticTexts.element(matching: .staticText, identifier: "timeLabel")
         let toggleTimerButton: XCUIElement = app.buttons.element(matching: .button, identifier: "toggleButton")
         
+       
+        XCTAssertTrue(toggleTimerButton.isHittable)
+        
         if timerTextElement.exists, toggleTimerButton.isHittable {
            
             // start Timer
