@@ -17,6 +17,7 @@ jobs:
       matrix:
         ios: [17.2, 17.0]
         device: [iPhone 15, iPad Pro (11-inch) (4th generation)]
+        results: [UITestiPhoneResults, UITestiPadResults]
     steps:
     - uses: actions/checkout@v4
     - name: Select Xcode
@@ -24,10 +25,10 @@ jobs:
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
     - name: Run UITests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath UITestResults -destination "platform=iOS Simulator,name=${{ matrix.device }},OS=${{ matrix.ios }}" "-only-testing:PomodoroUITests" 
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath ${{ matrix.results }} -destination "platform=iOS Simulator,name=${{ matrix.device }},OS=${{ matrix.ios }}" "-only-testing:PomodoroUITests" 
     - uses: kishikawakatsumi/xcresulttool@v1
       with:
-        path: UITestResults.xcresult
+        path: ${{ matrix.results }}.xcresult
       if: success() || failure()
   
   run_snapshot_tests:
