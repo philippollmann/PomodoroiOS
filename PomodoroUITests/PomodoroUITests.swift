@@ -38,7 +38,6 @@ final class PomodoroUITests: XCTestCase {
         let timerTextElement: XCUIElement = app.staticTexts.element(matching: .staticText, identifier: "timeLabel")
         let toggleTimerButton: XCUIElement = app.buttons.element(matching: .button, identifier: "toggleButton")
         
-       
         if timerTextElement.exists, toggleTimerButton.isHittable {
            
             // start Timer
@@ -62,6 +61,25 @@ final class PomodoroUITests: XCTestCase {
             XCTAssertEqual(timerTextElement.label, "25:00")
             XCTAssertEqual(toggleTimerButton.label, "Start")
         }
+    }
+    
+    func testSettingsView() throws {
+        let settingsButton: XCUIElement = app.buttons["settingsButton"]
+        
+        // opening settings view
+        settingsButton.tap()
+                    
+        // Check if the settings screen exists
+        let settingsTextElement: XCUIElement = app.staticTexts["settingsLabel"]
+        let settingsView = app.otherElements["settingsView"]
+        XCTAssertTrue(settingsView.waitForExistence(timeout: 1))
+        
+        // Check Label
+        XCTAssertEqual(settingsTextElement.label, "Hello, World!")
+        
+        // Dismiss Sheet
+        settingsView.swipeDown(velocity: .fast)
+        XCTAssertFalse(settingsTextElement.waitForExistence(timeout: 1))
     }
 
     func testLaunchPerformance() throws {
