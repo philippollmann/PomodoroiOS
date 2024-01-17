@@ -9,10 +9,27 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                .accessibilityIdentifier("settingsLabel")
+        }
+        .accessibilityIdentifier("settingsView")
     }
 }
 
-#Preview {
-    SettingsView()
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        previewLight()
+        previewDark()
+    }
+
+    static func previewLight() -> some View {
+        return SettingsView()
+            .preferredColorScheme(.light)
+    }
+
+    static func previewDark() -> some View {
+        return SettingsView()
+            .preferredColorScheme(.dark)
+    }
 }

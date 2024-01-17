@@ -50,6 +50,7 @@ struct PomodoroView: View {
                         Image(systemName: "gearshape")
                             .foregroundStyle(Color.text)
                     }
+                    .accessibilityIdentifier("settingsButton")
                 }
             }
         }
