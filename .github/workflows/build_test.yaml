@@ -2,7 +2,7 @@
 name: Pomodoro Tests
 
 on: 
-pull_request:
+  pull_request:
     types:
       - opened
     branches:
