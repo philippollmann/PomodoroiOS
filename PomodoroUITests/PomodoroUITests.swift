@@ -78,7 +78,7 @@ final class PomodoroUITests: XCTestCase {
         XCTAssertTrue(settingsView.waitForExistence(timeout: 1))
         
         // Check Label
-        XCTAssertEqual(settingsTextElement.label, "Hello, World!")
+        XCTAssertEqual(settingsTextElement.label, "Settings View")
         
         // Dismiss Sheet
         settingsView.swipeDown(velocity: .fast)
