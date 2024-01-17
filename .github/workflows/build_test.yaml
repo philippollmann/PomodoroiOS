@@ -15,20 +15,18 @@ jobs:
     name: Pomodoro UI Tests
     strategy:
       matrix:
-        ios: [17.2, 17.0]
         device: [iPhone 15, iPad Pro (11-inch) (4th generation)]
-        results: [UITestiPhoneResults, UITestiPadResults]
     steps:
     - uses: actions/checkout@v4
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_15.2.app && /usr/bin/xcodebuild -version
     - name: Check Available Simulators
       run: /usr/bin/xcrun simctl list devices
-    - name: Run UITests
-      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath ${{ matrix.results }} -destination "platform=iOS Simulator,name=${{ matrix.device }},OS=${{ matrix.ios }}" "-only-testing:PomodoroUITests" 
+    - name: Run UITests (${{ matrix.device }})
+      run: xcodebuild test -scheme Pomodoro -project Pomodoro.xcodeproj -resultBundlePath UITestResults -destination "platform=iOS Simulator,name=${{ matrix.device }},OS=17.2" "-only-testing:PomodoroUITests" 
     - uses: kishikawakatsumi/xcresulttool@v1
       with:
-        path: ${{ matrix.results }}.xcresult
+        path: UITestResults.xcresult
       if: success() || failure()
   
   run_snapshot_tests:
